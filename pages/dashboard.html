@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/leadway-logo.png">
+    <title>Dashboard</title>
+    <link href="/dist/output.css" rel="stylesheet">
+    <style>
+        /* Universal Box Sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Custom Hamburger Icon Styles */
+.hamburger {
+    display: none; /* Hide hamburger by default */
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .main-content {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .activity-table {
+        margin-top: 20px;
+    }
+
+    .sidebar,
+    .sidebar-lg {
+        display: none;
+    }
+
+    /* Show sidebars when toggled */
+    .sidebar.visible,
+    .sidebar-lg.visible {
+        display: flex;
+    }
+
+    .navbar {
+        padding: 0 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+
+    .navbar-item {
+        flex: 1;
+        padding: 0 10px;
+        margin: 0 5px;
+    }
+
+    .hamburger {
+        display: flex; /* Display on tablets */
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .main-content {
+        width: 100%;
+        padding: 0 5px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .activity-table,
+    .created-inspections-table {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .sidebar,
+    .sidebar-lg {
+        display: none;
+    }
+
+    /* Show sidebars when toggled */
+    .sidebar.visible,
+    .sidebar-lg.visible {
+        display: flex;
+    }
+
+    .navbar {
+        padding: 0 5px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navbar-item {
+        flex: 1;
+        padding: 0 10px;
+        margin: 0 5px;
+    }
+
+    .hamburger {
+        display: flex; /* Display on mobile and Android */
+    }
+}
+
+/* Android Specific Styles */
+@media (max-width: 768px) and (orientation: portrait) {
+    .main-content {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .card,
+    .activity-table,
+    .created-inspections-table {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 65px; /* Adjust padding as needed */
+    }
+
+    .navbar-item {
+        flex: 1;
+        padding: 25px;
+        margin: 0 5px;
+    }
+
+    .nav-logo {
+        position: relative;
+        left: 45px;
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Prevent sinking below specified size */
+@media (max-width: 590px) and (max-height: 641px) {
+    .main-content {
+        padding: 0;
+        overflow-y: auto; /* Add scrollbar if content overflows */
+    }
+
+    .card,
+    .activity-table,
+    .created-inspections-table {
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 65px; /* Adjust padding as needed */
+    }
+
+    .navbar-item {
+        flex: 1;
+        padding: 80px;
+        margin: 0 5px;
+    }
+
+    .nav-logo {
+        position: absolute;
+        left: 90px;
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Ensure content fits down to 360px x 800px */
+@media (max-width: 360px) and (max-height: 800px) {
+    .main-content {
+        padding: 0;
+        overflow-y: auto; /* Add scrollbar if content overflows */
+    }
+
+    .card,
+    .activity-table,
+    .created-inspections-table {
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding:55px; /* Adjust padding as needed */
+    }
+
+    .navbar-item {
+        flex: 1;
+        padding: 20px;
+        margin: 0 5px;
+    }
+
+    .nav-logo {
+        position: relative;
+        left: 1px;
+        display: block;
+        max-width: 85px;
+        height: auto;
+    }
+}
+
+    </style>
+</head>
+
+
+<body class="flex font-Mulish">
+
+    <nav class="w-full bg-white shadow fixed top-0 z-40 navbar">
+        <div class="h-[60px]">
+            <div class="flex items-center justify-end h-16">
+                <!-- Right Side -->
+                <div class="flex items-center">
+                    <!-- Hamburger Icon -->
+                    <div class="hamburger navbar-item" onclick="toggleSidebar()">
+                        <img src="/images/svgs/hamburger-icon.svg" alt="">
+                    </div>
+    
+                    <!-- Notification Icon -->
+                    <div class="navbar-item">
+                        <img class="h-6 w-6" src="/images/svgs/notification-icon.svg" alt="Notifications">
+                    </div>
+                    <!-- User Profile -->
+                    <div class="flex items-center space-x-2 navbar-item">
+                        <img class="h-8 w-8 rounded-full" src="/images/svgs/AM.svg" alt="User Profile">
+                        <span class="text-gray-700 text-sm">Adesola</span>
+                        <img src="/images/svgs/arrow-facing-down.svg" alt="arrow-facing-down">
+                    </div>
+                </div>
+                <!-- Logo only visible on smaller screens -->
+                <img src="/images/lac-dashboard-logo.png" alt="Logo" class="nav-logo hidden">
+            </div>
+        </div>
+    </nav>
+    
+    <!-- SMALL SIDE-BAR -->
+    <div class="w-[63px] bg-black text-white flex flex-col items-center sticky top-0 z-50 sidebar">
+        <!-- Icons -->
+        <div class="mt-32">
+            <img src="/images/svgs/side-bar-1.svg" alt="">
+        </div>
+        <div class="mt-[52px] py-2 px-5 bg-white">
+            <img src="/images/svgs/side-bar-2.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-3.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-4.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-5.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-6.svg" alt="">
+        </div>
+
+    </div>
+
+    <!-- BIG SIDE-BAR -->
+    <div class="w-[213px] bg-white border-r-[#EEEEEE] border-solid border-2 z-50 hidden lg:block sidebar-lg">
+        <div class="pl-[18px]">
+            <div class="pt-[47px]">
+                <img src="/images/lac-dashboard-logo.png" alt="">
+            </div>
+
+            <p class="mt-5 font-semibold text-[#7A7C87] text-base">TRM</p>
+
+            <div class="mt-6 w-[15px] flex justify-between mb-5">
+                <img src="/images/svgs/overview.svg" alt="">
+                <p class="text-sm text-orange-500 ml-[21px]">Overview</p>
+            </div>
+
+            <div class="mt-[35px] w-[15px] flex justify-between">
+                <img src="/images/svgs/requests.svg" alt="">
+                <p class="text-sm text-[#9FA8AF] ml-[21px]"><a href="./inspection.html">Requests</a></p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT, TOP CONTENT -->
+    <div class="px-11 mt-24 w-4/5 main-content">
+        <div class="flex justify-between">
+            <div>
+                <h1 class="font-medium text-xl text-[#34475E]">Welcome, <span class="font-bold text-xl">Olufemi</span>
+                </h1>
+                <p class="mt-1 text-xs text-[#2F2F2F]">Take a look at your dashboard and see all pending tasks</p>
+            </div>
+
+            <div class="mt-4 sm:mt-0">
+                <button class="bg-[#FF7A00] border rounded py-2 px-4 text-white flex items-center">
+                    <img src="/images/svgs/plus-icon.svg" alt="" class="mr-2">
+                    <a class="text-xs" href="/pages/create-inspection.html">Create New Inspection</a>
+                </button>
+            </div>
+        </div>
+
+        <!-- CARDS AND ACTIVITY  -->
+        <div class="mt-10 flex gap-4 main-content">
+            <!-- GROUP CARD 1 -->
+            <div>
+                <!-- CARD 1 -->
+                <div class="bg-[#4A8DFF] rounded-lg p-6 text-white relative w-72 h-32 overflow-hidden card">
+                    <div class="absolute top-4 right-4 text-right">
+                        <p class="text-lg">All Requests</p>
+                    </div>
+                    <div class="absolute bottom-4 left-4 flex items-center">
+                        <img src="/images/svgs/finger-point.svg" alt="" class="">
+                        <p class="text-4xl font-bold ml-44">32</p>
+                    </div>
+                    <div class="absolute -top-8 -right-8 w-20 h-20 bg-[#7AABFF] opacity-50 rounded-full"></div>
+                    <div class="absolute -bottom-8 -left-8 w-20 h-20 bg-[#7AABFF] opacity-50 rounded-full"></div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="bg-[#FDC75B] rounded-lg p-6 text-white relative w-72 h-32 overflow-hidden mt-3 card">
+                    <div class="absolute bottom-4 left-4 flex items-center">
+                        <img src="/images/svgs/finger-point.svg" alt="">
+                        <p class="text-4xl font-bold ml-44">19</p>
+                    </div>
+                    <div class="absolute top-4 right-4 text-right">
+                        <p class="text-lg">Ongoing Requests</p>
+                    </div>
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#FFB946] opacity-50 rounded-full"></div>
+                    <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#FFB946] opacity-50 rounded-full">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- GROUP CARD 2 -->
+            <div>
+                <!-- CARD 3 -->
+                <div class="bg-[#00B388] rounded-lg p-6 text-white relative w-72 h-32 overflow-hidden card">
+                    <div class="absolute bottom-4 left-4 flex items-center">
+                        <img src="/images/svgs/finger-point.svg" alt="">
+                        <p class="text-4xl font-bold ml-40">114</p>
+                    </div>
+                    <div class="absolute top-4 right-4 text-right">
+                        <p class="text-lg">Completed Requests</p>
+                    </div>
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#15BE96] opacity-50 rounded-full"></div>
+                    <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#15BE96] opacity-50 rounded-full">
+                    </div>
+                </div>
+                <!-- CARD 4 -->
+                <div class="bg-[#E30000] rounded-lg p-6 text-white relative w-72 h-32 overflow-hidden mt-3 card">
+                    <div class="absolute bottom-4 left-4 flex items-center">
+                        <img src="/images/svgs/finger-point.svg" alt="">
+                        <p class="text-4xl font-bold ml-44">19</p>
+                    </div>
+                    <div class="absolute top-4 right-4 text-right">
+                        <p class="text-lg">Delayed Requests</p>
+
+                    </div>
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#FE4840] opacity-50 rounded-full"></div>
+                    <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#FE4840] opacity-50 rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Activity Table -->
+            <div class="ml-0 sm:ml-4 bg-white border-[#D8D8D8] border rounded-lg p-4 activity-table">
+
+                <div class="flex justify-between items-center pb-2 mb-2">
+                    <h2 class="text-base font-normal text-[#34475E] ml-2">Activity</h2>
+                    <a href="#" class="text-xs text-[#C3C4C6]">View all</a>
+                </div>
+                <hr class="w-full">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <tbody class="bg-white divide-y divide-[#F6F6F6]">
+                        <tr>
+                            <td class="px-2 py-2 text-xs text-[#2F2F2F]">You have a property inspection
+                                coming
+                                up in three days</td>
+                            <td class="px-2 py-2 text-xs text-right">
+                                <a href="#" class="text-[#FF7A00]">Set reminder</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-2 py-2 text-xs text-[#2F2F2F]">Mustapha Onasanya sent a new property
+                                inspection for Ravenheight homes</td>
+                            <td class="px-2 py-2 text-xs text-right">
+                                <a href="#" class="text-[#FF7A00]">See inspection</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-2 py-2 text-xs text-[#2F2F2F]">Your scheduled inspection for Gig
+                                Logistics is three days overdue</td>
+                            <td class="px-2 py-2 text-xs text-right">
+                                <a href="#" class="text-[#FF7A00]">Re-schedule now</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-2 py-2 text-xs text-[#2F2F2F]">Mustapha Onasanya sent a new property
+                                inspection for Ravenheight homes</td>
+                            <td class="px-2 py-2 text-xs text-right">
+                                <a href="#" class="text-[#FF7A00]">See inspection</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- BOTTOM TABLE -->
+        <!-- TODO: WORK ON TABLE COLUMN SPACING AND BORDER -->
+        <div class="flex justify-between items-center pb-2 mb-2 mt-16">
+            <h2 class="text-sm font-medium text-[#34475E]">Created Inspections</h2>
+            <a href="#" class="text-xs text-[#C3C4C6]">View all</a>
+        </div>
+
+        <div class="rounded-lg created-inspections-table">
+            <div class="bg-white border-[#D8D8D8] border shadow rounded-lg p-4">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead class="">
+                            <tr>
+                                <th class="px-4 pt-4 pb-4 text-xs font-medium text-[#7F8B94] text-left">ID</th>
+                                <th class="pl-1 py-4 text-xs font-medium text-[#7F8B94] text-left">Name</th>
+                                <th class="px-4 py-4 text-xs font-medium text-[#7F8B94] text-left">Class</th>
+                                <th class="px-4 py-4 text-xs font-medium text-[#7F8B94] text-left">Inspection
+                                    method</th>
+                                <th class="px-4 py-4 text-xs font-medium text-[#7F8B94] text-left">Officer</th>
+                                <th class="px-4 py-4 text-xs font-medium text-[#7F8B94] text-left">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">10321</td>
+                                <td class="pl-1 py-2 text-sm text-gray-700">GIG Logistics</td>
+                                <td class="px-4 py-2 text-sm text-gray-700"><span class="text-purple-600">•</span>
+                                    Marine</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Digital</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Mustapha Onasanya</td>
+                                <td class="px-4 py-2 text-xs text-[#9F9F9F]">QUOTE REQUEST</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">10321</td>
+                                <td class="pl-1 py-2 text-sm text-gray-700">Shoprite Stores</td>
+                                <td class="px-4 py-2 text-sm text-gray-700"><span class="text-purple-600">•</span>
+                                    Property</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Manual</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Mustapha Onasanya</td>
+                                <td class="px-4 py-2 text-sm text-gray-700"><span class="bg-[#ECFDF3] font-medium text-[#027A48] rounded-sm border py-[1px] px-2
+                                            text-xs">Completed</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">10321</td>
+                                <td class="pl-1 py-2 text-sm text-gray-700">Abiodun Abayomi</td>
+                                <td class="px-4 py-2 text-sm text-gray-700"><span class="text-orange-600">•</span>
+                                    Motors</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Digital</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Mustapha Onasanya</td>
+                                <td class="px-4 py-2 text-sm text-gray-700"><span class="bg-[#FFDEBF] text-[#FF7A00] border font-medium py-[1px] px-4 rounded-sm
+                                            text-xs">Ongoing</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">10321</td>
+                                <td class="pl-1 py-2 text-sm text-gray-700">Ben's Agro Allied</td>
+                                <td class="px-4 py-2 text-sm text-gray-700"><span class="text-green-600">•</span>
+                                    Agric</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Manual</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Mustapha Onasanya</td>
+                                <td class="px-4 py-2 text-xs text-[#9F9F9F] font-medium">SENT TO ENGINEER</td>
+
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">10321</td>
+                                <td class="pl-1 py-2 text-sm text-gray-700">Abiodun Abayomi</td>
+                                <td class="px-4 py-2 text-sm text-gray-700"><span class="text-yellow-600">•</span>
+                                    Bond</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Digital</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Mustapha Onasanya</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">
+                                    <span class="bg-[#FEF3F2] text-[#B42318] pl-1 pr-2 py-1 font-medium rounded text-xs inline-flex
+                                            items-center">
+                                        <img src="/images/svgs/x-icon.svg" class="mr-2 ml-1" alt="x-icon">
+                                        Link expired
+                                    </span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">10321</td>
+                                <td class="pl-1 py-2 text-sm text-gray-700">Julius Berger</td>
+                                <td class="px-4 py-2 text-sm text-gray-700"><span class="text-red-600">•</span>
+                                    Engineering</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Digital</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Mustapha Onasanya</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">
+                                    <span class="bg-[#F2F4F7] text-[#344054] font-medium py-1 px-3 rounded text-xs inline-flex
+                                            items-center">
+                                        <img src="/images/svgs/inspection-icon.svg" class="mr-2" alt="">
+                                        Inspection link
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">10321</td>
+                                <td class="pl-1 py-2 text-sm text-gray-700">Abiodun Abayomi</td>
+                                <td class="px-4 py-2 text-sm text-gray-700"><span class="text-green-600">•</span>
+                                    Agric</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Digital</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Mustapha Onasanya</td>
+                                <td class="px-4 py-2 text-sm text-gray-700"><span class="bg-[#ECFDF3] font-medium text-[#027A48] rounded-sm border py-[1px] px-2
+                                            text-xs">Completed</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+ <!-- JAVA SCRIPT FOR TOGGLE SIDEBAR -->
+ <script>
+    function toggleSidebar() {
+        document.querySelector('.sidebar').classList.toggle('visible');
+        document.querySelector('.sidebar-lg').classList.toggle('visible');
+    }
+</script>
+</body>
+</html>

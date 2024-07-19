@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/leadway-logo.png">
+    <title>Inspection List</title>
+    <link href="/dist/output.css" rel="stylesheet">
+    <style>
+        /* Additional CSS for responsiveness */
+        @media screen and (max-width: 768px) {
+            .flex-items-center-sm {
+                flex-wrap: wrap;
+            }
+
+            .flex-items-center-sm > * {
+                margin-bottom: 8px;
+                margin-right: 8px;
+            }
+
+            .search-input {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            .marine-label,
+            .sort-by-label {
+                display: none;
+            }
+
+            /* Adjustments for the logo inside nav on smaller screens */
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 65px; /* Adjust padding as needed */
+            }
+
+            .nav-logo {
+                position: relative;
+                left: 50px;
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* Hide the logo in the main content area on smaller screens */
+            .main-content .logo {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="flex font-Mulish">
+
+    <nav class="w-full bg-white shadow fixed top-0 z-40">
+        <div class="h-[60px]">
+            <div class="flex items-center justify-end h-16">
+                <!-- Right Side -->
+                <div class="flex items-center">
+                    <!-- Notification Icon -->
+                    <div class="mr-6 lg:mr-[29px]">
+                        <img class="h-6 w-6" src="/images/svgs/notification-icon.svg" alt="Notifications">
+                    </div>
+                    <!-- User Profile -->
+                    <div class="flex items-center space-x-2 mr-4 lg:mr-[60px]">
+                        <img class="h-8 w-8 rounded-full mr-2" src="/images/svgs/AM.svg" alt="User Profile">
+                        <span class="text-gray-700 text-sm mr-2">Adesola</span>
+                        <img src="/images/svgs/arrow-facing-down.svg" class="mr-2" alt="arrow-facing-down">
+                    </div>
+                </div>
+                <!-- Logo only visible on smaller screens -->
+                <img src="/images/lac-dashboard-logo.png" alt="Logo" class="nav-logo hidden">
+            </div>
+        </div>
+    </nav>
+
+    <!-- SMALL SIDE-BAR -->
+    <div class="w-[63px] h-screen bg-black text-white flex flex-col items-center sticky top-0 z-50">
+        <!-- Icons -->
+        <div class="mt-32">
+            <img src="/images/svgs/side-bar-1.svg" alt="">
+        </div>
+        <div class="mt-[52px] py-2 px-5 bg-white">
+            <img src="/images/svgs/side-bar-2.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-3.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-4.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-5.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-6.svg" alt="">
+        </div>
+
+    </div>
+
+    <!-- BIG SIDE-BAR -->
+    <div class="w-[213px] bg-white border-r-[#EEEEEE] border-solid border-2 z-50 hidden lg:block">
+        <div class="pl-[18px]">
+            <div class="pt-[47px]">
+                <!-- Logo in big sidebar (adjust according to your design) -->
+                <img src="/images/lac-dashboard-logo.png" alt="">
+            </div>
+
+            <p class="mt-5 font-semibold text-[#7A7C87] text-base">TRM</p>
+
+            <div class="mt-6 w-[15px] flex justify-between mb-5">
+                <img src="/images/svgs/unactive-overview.svg" alt="">
+                <p class="text-sm text-[#9FA8AF] ml-[21px]"><a href="./dashboard.html">Overview</a></p>
+            </div>
+
+            <div class="mt-[35px] w-[15px] flex justify-between">
+                <img src="/images/svgs/active-requests.svg" alt="">
+                <p class="text-sm   text-orange-500 ml-[21px]">Requests</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT, TOP CONTENT -->
+    <div class="px-11 mt-24 w-4/5">
+        <div class="flex justify-between">
+            <div>
+                <h1 class="font-medium text-xl text-[#34475E]">Inspection List
+                </h1>
+                <p class="mt-1 text-xs text-[#2F2F2F]">See Inspections across all business classes</p>
+            </div>
+
+            <div class="mt-4 sm:mt-0">
+                <button class="bg-[#FF7A00] border rounded py-2 px-4 text-white flex items-center">
+                    <img src="/images/svgs/plus-icon.svg" alt="" class="mr-2">
+                    <a class="text-xs" href="/pages/create-inspection.html">Create New Inspection</a>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Tabs -->
+        <div class="mt-10 flex justify-between items-center flex-items-center-sm">
+            <ul class="flex bg-[#EEEEEE] rounded-lg border py-2 px-1">
+                <li class="">
+                    <a href="./inspection.html"
+                        class="bg-white rounded-lg py-2 px-4 text-[#2F2F2F] font-normal text-xs">All
+                        Requests</a>
+                </li>
+                <li class="">
+                    <a class="py-2 px-4 text-[#2F2F2F] font-normal text-xs" href="./ongoing.html">Ongoing</a>
+                </li>
+                <li class="">
+                    <a class="py-2 px-4 text-[#2F2F2F] font-normal text-xs" href="./completed.html">Completed</a>
+                </li>
+            </ul>
+
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search"
+                        class="search-input border rounded-sm border-[#EEEEEE] placeholder-[#585858] text-sm pl-10 pr-5 py-1">
+                    <img src="/images/svgs/search-icon.svg"
+                        class="absolute left-3 top-1/2 transform -translate-y-1/2" />
+                </div>
+                <span
+                    class="bg-[#EEEEEE] font-xs text-[#000000] rounded-md border py-1 px-2 text-sm flex items-center marine-label">
+                    <span class="text-[#6941C6] mr-2">•</span>
+                    Marine
+                    <span class="text-[#7A7C87] ml-2">x</span>
+                </span>
+                <span
+                    class="bg-white font-medium text-[#000000] rounded-md border py-1 px-3 text-sm flex items-center sort-by-label">
+                    <p class="text-[#9F9F9F] mr-1">Sort by:</p>
+                    <span class="text-[#000000]">Class</span>
+                </span>
+            </div>
+        </div>
+
+
+        <!-- TABLE -->
+        <div class="rounded-lg mt-4">
+            <div class="bg-white border-[#D8D8D8] border rounded-lg p-4">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead class="">
+                            <tr>
+                                <th class="px-4 pt-4 pb-4 text-xs font-medium text-[#7F8B94] text-left">ID</th>
+                                <th class="pl-1 py-4 text-xs font-medium text-[#7F8B94] text-left">Date</th>
+                                <th class="px-4 py-4 text-xs font-medium text-[#7F8B94] text-left">Name</th>
+                                <th class="px-4 py-4 text-xs font-medium text-[#7F8B94] text-left">Inspection
+                                    method</th>
+                                <th class="px-4 py-4 text-xs font-medium text-[#7F8B94] text-left">Officer</th>
+                                <th class="px-4 py-4 text-xs font-medium text-[#7F8B94] text-left">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">10321</td>
+                                <td class="pl-1 py-2 text-sm text-gray-700">15/06/2023</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">
+                                    Rovenheights properties</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Digital</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Mustapha Onasanya</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">
+                                    <a href="user.html" class="bg-[#FFDEBF] text-[#FF7A00] rounded-[3px] border py-[1px] px-2 text-xs">Ongoing</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">10321</td>
+                                <td class="pl-1 py-2 text-sm text-gray-700">12/06/2023</td>
+
+                                <td class="px-4 py-2 text-sm text-gray-700">
+                                    Shoprite Stores</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Manual</td>
+                                <td class="px-4 py-2 text-sm text-gray-700">Mustapha Onasanya</td>
+                                <td class="px-4 py-2 text-sm text-gray-700"><span class="bg-[#ECFDF3] font-medium text-[#027A48] rounded-[3px] border py-[1px] px-2
+                                            text-xs">Completed</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

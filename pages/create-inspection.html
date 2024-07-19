@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/leadway-logo.png">
+    <title>Create New Inspection</title>
+    <link href="/dist/output.css" rel="stylesheet">
+
+    <style>
+        .dropdown-icon {
+            position: absolute;
+            right: 1rem;
+            pointer-events: none;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #eeeeee;
+            z-index: 1;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-menu div {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-menu div:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown-menu .disabled {
+            color: #B0B0B0; /* Grey color for disabled text */
+            cursor: not-allowed;
+            pointer-events: none; /* Prevent interaction */
+        }
+
+        .dropdown-menu .disabled .color-dot {
+            background-color: #B0B0B0; /* Grey color for disabled dots */
+        }
+
+
+        .create-request-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem; /* Adjusted margin-top */
+        }
+
+        .sidebar-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .color-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            margin-left: 2rem;
+            margin-right: 0.3rem; /* Reduced margin-right */
+            margin-top: 0.2rem; /* Adjusted margin-top */
+        }
+
+        .selected-class-container {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem; /* Reduced gap between dot and text */
+        }
+
+        .flex-row {
+            gap: 20px; /* Add space between the pre and post images */
+        }
+
+        .flex-col {
+            margin-top: 30px; /* Add space between the pre and post images */
+        }
+
+        .clickable-icon {
+            cursor: pointer;
+        }
+
+        .clickable-icon.active {
+            border: 2px solid orange;
+            border-radius: 10px;
+        }
+
+        .circle-between-icons {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .relative-container {
+            position: relative;
+        }
+
+        .right-arrow {
+            position: absolute;
+            top: 48%;
+            left: 34%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+        }
+
+    </style>
+</head>
+
+<body class="flex font-Mulish">
+
+    <nav class="w-full bg-white shadow fixed top-0 z-40">
+        <div class="h-[60px]">
+            <div class="flex items-center justify-end h-16">
+                <!-- Right Side -->
+                <div class="flex items-center">
+                    <!-- Notification Icon -->
+                    <div class="mr-6 lg:mr-[29px]">
+                        <img class="h-6 w-6" src="/images/svgs/notification-icon.svg" alt="Notifications">
+                    </div>
+                    <!-- User Profile -->
+                    <div class="flex items-center space-x-2 mr-4 lg:mr-[60px]">
+                        <img class="h-8 w-8 rounded-full mr-2" src="/images/svgs/AM.svg" alt="User Profile">
+                        <span class="text-gray-700 text-sm mr-2">Adesola</span>
+                        <img src="/images/svgs/arrow-facing-down.svg" class="mr-2" alt="arrow-facing-down">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- SMALL SIDE-BAR -->
+    <div class="w-[63px] h-screen bg-black text-white flex flex-col items-center sticky top-0 z-50">
+        <!-- Icons -->
+        <div class="mt-32">
+            <img src="/images/svgs/side-bar-1.svg" alt="">
+        </div>
+        <div class="mt-[52px] py-2 px-5 bg-white">
+            <img src="/images/svgs/side-bar-2.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-3.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-4.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-5.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-6.svg" alt="">
+        </div>
+    </div>
+
+    <!-- BIG SIDE-BAR -->
+    <div class="w-[213px] bg-white border-r-[#EEEEEE] border-solid border-2 z-50 hidden lg:block">
+        <div class="pl-[18px]">
+            <div class="pt-[47px]">
+                <img src="/images/lac-dashboard-logo.png" alt="">
+            </div>
+
+            <p class="mt-5 font-semibold text-[#7A7C87] text-base">TRM</p>
+
+            <div class="mt-6 w-[15px] flex justify-between mb-5">
+                <img src="/images/svgs/unactive-overview.svg" alt="">
+                <p class="text-sm text-[#9FA8AF] ml-[21px]"><a href="./dashboard.html">Overview</a></p>
+            </div>
+
+            <div class="mt-[35px] w-[15px] flex justify-between">
+                <img src="/images/svgs/active-requests.svg" alt="">
+                <p class="text-sm text-orange-500 ml-[21px]">Requests</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- MAIN CONTENT -->
+    <div class="px-11 mt-24 w-4/5">
+        <div class="flex justify-between items-center">
+            <div>
+                <h1 class="font-medium text-xl text-[#34475E]">Create New Inspection</h1>
+                <p class="mt-1 text-xs text-[#2F2F2F]">See Inspections across all business classes</p>
+            </div>
+            <div class="flex items-center mt-4 sm:mt-0 space-x-2">
+                <a href="/pages/dashboard.html" class="text-white flex items-center px-4 py-2">
+                    <img src="/images/svgs/close-icon.svg" alt="">
+                    <span class="text-xs">Dashboard</span>
+                </a>
+            </div>
+            
+<!-- 
+            <div class="flex items-center mt-4 sm:mt-0 space-x-2">
+                <button class="text-white flex items-center px-4 py-2">
+                    <img src="/images/svgs/close-icon.svg" alt="">
+                    <a class="text-xs" href="/pages/dashboard.html"></a>
+                </button>
+            </div> -->
+        </div>
+
+        <div class="p-6 px-0 w-full lg:w-full h-screen bg-transparent">
+            <div class="flex flex-col items-center gap-[50px]">
+                <div class="flex flex-col gap-7 mt-5">
+                    
+                    <!-- PRE AND POST IMAGE CONTAINER -->
+                    <div class="flex flex-row items-center justify-center gap-6">
+                        <div class="flex flex-col items-center clickable-icon" onclick="handleIconClick(this)">
+                            <img src="/images/svgs/pre-post-inspection.svg" class="w-[200px] h-[auto]">
+                        </div>
+                        <div class="circle-between-icons"></div> <!-- Circle between icons -->
+                        <div class="flex flex-col items-center relative clickable-icon" onclick="handleIconClick(this)">
+                            <img src="/images/svgs/post-inspection.svg" alt="" class="relative w-[200px] h-[auto]">
+                            <img src="/images/svgs/right-arrow.svg" alt="" class="right-arrow">
+                        </div>
+                    </div>
+
+
+                    <!-- SELECT CHOOSE A CLASS CONTAINER -->
+                    <div class="flex flex-col gap-3 mt-3">
+                        <label for="class" class="text-[#2F2F2F] text-sm">Choose a class</label>
+                        <div id="dropdown" class="bg-[#ffffff] border border-[#eeeeee] rounded-md flex items-center justify-between w-full py-2 px-6 cursor-pointer dropdown">
+                            <div class="selected-class-container">
+                                <span class="color-dot" style="background-color: #3357FF;"></span>
+                                <p id="selected-class">Property</p>
+                            </div>
+                            <img src="/images/svgs/arrow-facing-down.svg" alt="" class="dropdown-icon" />
+                        </div>
+
+                        <div id="dropdown-menu" class="dropdown-menu">
+                            <div data-color="#FF5733" data-url="/pages/create-inspection2.html" class="flex items-center gap-2 selectable"><span class="color-dot" style="background-color: #FF5733;"></span>Motors</div>
+                            <div data-color="#33FF57" class="flex items-center gap-2 selectable"><span class="color-dot" style="background-color: #3357FF;"></span>Property</div>
+                            <div data-color="#3357FF" class="flex items-center gap-2 disabled" aria-disabled="true"><span class="color-dot" style="background-color: #A833FF;"></span>Marine</div>
+                            <div data-color="#FF33A8" class="flex items-center gap-2 disabled" aria-disabled="true"><span class="color-dot" style="background-color: #33FF57;"></span>Agric</div>
+                            <div data-color="#A833FF" class="flex items-center gap-2 disabled" aria-disabled="true"><span class="color-dot" style="background-color: #FF5;"></span>Bond</div>
+                            <div data-color="#FF8F33" class="flex items-center gap-2 disabled" aria-disabled="true"><span class="color-dot" style="background-color: #FF5733;"></span>Engineering</div>
+                        </div>
+                        
+                        <!-- <div id="dropdown-menu" class="dropdown-menu">
+                            <div data-color="#FF5733" class="flex items-center gap-2"><span class="color-dot" style="background-color: #FF5733;"></span>Motors</div>
+                            <div data-color="#33FF57" class="flex items-center gap-2"><span class="color-dot" style="background-color: #3357FF;"></span>Property</div>
+                            <div data-color="#3357FF" class="flex items-center gap-2"><span class="color-dot" style="background-color: #A833FF;"></span>Marine</div>
+                            <div data-color="#FF33A8" class="flex items-center gap-2"><span class="color-dot" style="background-color: #33FF57;"></span>Agric</div>
+                            <div data-color="#A833FF" class="flex items-center gap-2"><span class="color-dot" style="background-color: #FF5;"></span>Bond</div>
+                            <div data-color="#FF8F33" class="flex items-center gap-2"><span class="color-dot" style="background-color: #FF5733;"></span>Engineering</div>
+                        
+                        </div> -->
+                    </div>
+                </div>
+
+                <div id="createRequestContainer" class="create-request-button">
+                    <!-- Initially empty, will be populated dynamically -->
+                    <button class="bg-[#C3C4C6] text-white h-9 rounded-sm py-5 px-10 flex gap-3 justify-center items-center mb-[10px] hover:bg-[#FF7A00]">
+                        <img src="/images/svgs/create-request-btn.svg" alt="create" />
+                        Create Request
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const dropdown = document.getElementById('dropdown');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const selectedClass = document.getElementById('selected-class');
+        const colorDot = document.querySelector('.color-dot');
+
+        selectedClass.textContent = 'Property';
+        colorDot.style.backgroundColor = '#3357FF';
+
+        dropdown.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('show');
+        });
+
+        dropdownMenu.addEventListener('click', (e) => {
+            if (e.target.classList.contains('selectable')) {
+                selectedClass.textContent = e.target.textContent;
+                colorDot.style.backgroundColor = e.target.getAttribute('data-color');
+                dropdownMenu.classList.remove('show');
+
+                // Get the URL from the selected item
+                const pageUrl = e.target.getAttribute('data-url');
+                if (pageUrl) {
+                    window.location.href = pageUrl;
+                }
+            }
+});
+
+
+
+
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
+        function handleIconClick(element) {
+            // Remove active class from all icons
+            const icons = document.querySelectorAll('.clickable-icon');
+            icons.forEach(icon => icon.classList.remove('active'));
+
+            // Add active class to the clicked icon
+            element.classList.add('active');
+
+            // Select the create-request-button container
+            const createRequestContainer = document.getElementById('createRequestContainer');
+
+            // Replace content with the new SVG button
+            createRequestContainer.innerHTML = `
+                <button class="bg-[#C3C4C6] text-white h-9 rounded-sm py-5 px-10 flex gap-3 justify-center items-center mb-[10px] hover:bg-[#FF7A00]" onclick="handleCreateRequest()">
+                    <img src="/images/svgs/org-create-request-btn.svg" alt="new button" />
+                    Create Request
+                </button>
+            `;
+        }
+
+        function handleCreateRequest() {
+            // Determine which page to link based on the active icon
+            let pageUrl;
+            const activeIcon = document.querySelector('.clickable-icon.active');
+
+            if (activeIcon && activeIcon.querySelector('img').getAttribute('src') === '/images/svgs/pre-post-inspection.svg') {
+                pageUrl = "/pages/porperty.html";
+            } else if (activeIcon && activeIcon.querySelector('img').getAttribute('src') === '/images/svgs/post-inspection.svg') {
+                pageUrl = "/pages/post-loss-inspection-property.html";
+            }
+
+            // Navigate to the new page if a valid URL is determined
+            if (pageUrl) {
+                window.location.href = pageUrl;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

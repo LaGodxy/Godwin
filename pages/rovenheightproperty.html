@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/leadway-logo.png">
+    <title>Inspection List</title>
+    <link href="/dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+    .container-fixed {
+    max-width: 1100px;
+    margin: 0px auto;
+    background-color: #eeeeee;
+    display: flex;
+  }
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #eeeeee;
+    /* display: flex; */
+  }
+/*   
+  /* side nav style */
+  
+  .sidebar {
+    width: 278px;
+    color: #fff;
+    display: flex;
+    border: 1px solid #dad7d7;
+  }
+  .sidenav1 {
+    background-color: #222;
+    width: 64px;
+  }
+  .sidenav1 nav ul li a {
+    color: #ff7a00;
+  }
+  /* .sidenav1 nav ul li:first-child a {
+          color: blue;
+        } */
+  .sidenav2 {
+    background-color: #eeeeee;
+    color: black;
+  }
+  .sidenav2 nav ul li a {
+    color: #ff7a00;
+  }
+  
+  .sidebar .logo img {
+    width: 100%;
+    margin-top: 50px;
+    height: 3.5rem;
+  }
+  
+  .sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar nav ul li {
+    width: 100%;
+    padding: 15px 20px;
+  }
+  
+  .sidebar nav ul li a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar nav ul li a i {
+    height: 23px;
+    width: 23px;
+    margin-right: 22px;
+    height: 20px;
+    width: 36px;
+    font-size: 16px;
+  }
+  
+  .sidebar nav ul li.active,
+  .sidebar nav ul li:hover {
+    background-color: white;
+    width: auto;
+  }
+  .sidenav1 nav {
+    margin-top: 90px;
+  }
+  .sidenav2 nav ul li {
+    padding: 10px;
+  }
+  .sidenav2 nav ul li a img {
+    margin-right: 10px;
+  }
+  
+  .sidenav2 nav ul li:first-child a {
+    color: #585858;
+  }
+  .sidenav2 nav ul li:nth-of-type(2) a {
+    color: #585858;
+  }
+  
+  /* main content style */
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px 20px 20px;
+    width: 100%;
+  }
+  
+  .top-nav {
+    display: flex;
+    justify-content: flex-end;
+    border: 1px solid #dad7d7;
+    border-radius: 5px;
+    width: 100%;
+  }
+  .top-nav-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+  }
+  .top-nav-content p {
+    font-family: Mulish;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12.55px;
+    text-align: left;
+    margin-left: 5px;
+  }
+  /* .top-nav-content img {
+      border: 2px solid red;
+    } */
+  
+  .top-nav-content .notification {
+    width: 24.17px;
+    height: 29px;
+    color: #585858;
+  }
+  .top-nav-content .am {
+    font-family: Mulish;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.06px;
+    text-align: left;
+    width: 20px;
+    height: 15px;
+    background-color: #222;
+    margin-left: 5px;
+    border-radius: 50px;
+  } */ */
+  
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  header h1 {
+    font-family: Mulish;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 27.61px;
+    text-align: left;
+    color: #34475e;
+  }
+  
+  header p {
+    font-family: Mulish;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15.06px;
+    text-align: left;
+    width: 312px;
+    height: 15px;
+    color: #2f2f2f;
+  }
+  
+  /* section style */
+  .main {
+    width: 100%;
+    height: 252px;
+    /* border:1px solid hsl(0, 4%, 85%); */
+    border-radius: 5px;
+    display: flex;
+    gap: 30px;
+    padding: 10px 0px 10px 0px;
+    justify-content: center;
+  }
+  
+  .tower img {
+    width: 170px;
+    height: 170px;
+  }
+  .tower p {
+    font-family: Mulish;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    margin: 0px auto;
+    margin-top:-58px;
+    width: 48px;
+    height: 5px;
+  }
+  .property {
+    width: 100%;
+    height: auto;
+  }
+  .property h1 {
+    font-family: Mulish;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22.59px;
+    text-align: left;
+    width: 252px;
+    height: 23px;
+  }
+  .property-detail {
+    display: flex;
+    gap: 40px;
+  }
+  
+  h6 {
+    font-family: Mulish;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 12.55px;
+    text-align: left;
+    width: 120px;
+    height: 5px;
+    padding-top: 15px;
+    color: A3A3A3;
+  }
+  p {
+    font-family: Mulish;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 10.57px;
+    text-align: left;
+    margin-bottom: 10px;
+    width: 100px;
+    color: #585858;
+  }
+  .policy-progress img {
+    width: 101px;
+    height: 102px;
+  }
+  .policy-progress h6 {
+    font-family: Mulish;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.06px;
+    text-align: left;
+    margin-bottom:25% ;
+    color: #ff7a00;
+  }
+  .policy-progress p {
+    font-family: Mulish;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.06px;
+    text-align: left;
+    color: #7f8b94;
+  }
+  .insured-policy {
+    width: 100%;
+    font-family: Mulish;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.1px;
+    text-align: left;
+    color: #34475e;
+  }
+  .insured-policy-description {
+    width: 100%;
+    height: 477px;
+    /* border:1px solid #dad7d7; */
+    border-radius: 5px;
+  }
+  .insured-policy-description p {
+    width: 100%;
+    height: 477px;
+  }
+  .links {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .links a {
+    font-family: Mulish;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17.57px;
+    text-align: left;
+    color: #9fa8af;
+  }
+  .links a:nth-of-type(2) {
+    color: #ff7a00;
+  }
+  
+  .links a:nth-of-type(1):hover,
+  .links a:nth-of-type(3):hover,
+  .links a:nth-of-type(2):hover {
+    color: #ff7a00;
+  }
+  .content {
+    width: 100%;
+  }
+  .content p {
+    width: 100%;
+    font-family: Mulish;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22.82px;
+    text-align: left;
+    padding-left: 20px;
+  }
+  /* insured details property */
+  .tab-container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+  
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .tab-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    outline: none;
+    transition: color 0.3s;
+  }
+  
+  .tab-button.active {
+    color: orange;
+    border-bottom: 2px solid orange;
+  }
+  
+  .tab-content {
+    padding: 20px 0;
+  }
+  
+  .content {
+    display: none;
+  }
+  
+  .content.active {
+    display: block;
+  }
+  
+  .property-row,
+  .document-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .document-row a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: orange;
+    cursor: pointer;
+  }
+  
+  /* link property style */
+  .tab-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+  
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    overflow-x: auto;
+  }
+  
+  .tab-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    transition: color 0.3s;
+    flex-shrink: 0;
+    color: #9fa8af;
+    font-family: Mulish;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17.57px;
+    text-align: left;
+  }
+  
+  .tab-button.active {
+    color: orange;
+    border-bottom: 2px solid orange;
+  }
+  
+  .tab-content {
+    padding: 20px 0;
+  }
+  
+  .content {
+    display: none;
+  }
+  
+  .content.active {
+    display: block;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+  
+  .grid-item {
+    font-family: Mulish;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17.57px;
+    text-align: left;
+  }
+  
+  .grid-item strong {
+    font-family: Mulish;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 15.06px;
+    text-align: left;
+  }
+  
+  .document-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .document-row a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #ff7a00;
+    cursor: pointer;
+  }
+  
+  .table-container {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+  .table-container td {
+    padding: 10px;
+    text-align: left;
+    font-family: Mulish;
+  font-size: 12.79px;
+  font-weight: 400;
+  line-height: 16.05px;
+  text-align: left;
+  color: #A7A7A7;
+  }
+  .table-container .first-column {
+    color: #34475E;
+  }
+  .table-container .icon {
+    color: #ff7a00;
+  }
+  .table-container th {
+    background-color: #f2f2f2;
+  }
+  
+  .first-column {
+    width: 50%;
+  }
+  @media screen and (max-width:950px){
+    .main{
+      justify-content: center;
+      text-align: center;
+      flex-wrap: wrap;
+      /* flex-direction: column; */
+      margin-right: 2px;
+  
+    }
+    header{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .policy-progress{
+      margin-top: 16%;
+    }
+    .policy-progress h6{
+      margin-bottom: 19%;
+    }
+    .info{
+      margin-top: 70%;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    body{
+      overflow-x: hidden;
+    }
+    .sidebar {
+      display: none;
+    }
+    .sidenav2 {
+      display: none;
+    }
+    .input-search {
+      display: none;
+    }
+  .policy-progress{
+    margin-top: 40%;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .policy-progress h6{
+    margin-bottom: 20%;
+  }
+    .main {
+      display: block;
+    }
+    .info {
+      margin-top: 400px;
+    }
+    .main{
+      justify-content: center;
+      text-align: center;
+      margin-right: 2px;
+    }
+    
+    .content{
+      overflow-x: auto;
+    }
+    .table-container{
+      width: 120%;
+    }
+    .tableContent{
+      overflow-x: auto;
+    }
+    div.props-3 {
+      display: flex;
+      flex-direction: row;
+      /* border:2px solid black; */
+    }
+
+    .property{
+      position:relative;
+      left: -10px;
+    }
+    .main .tower p {
+      display: none;
+    }
+    
+}
+  
+    </style>
+</head>
+
+<body class="flex font-Mulish">
+    <nav class="w-full bg-white shadow fixed top-0 z-40">
+        <div class="h-[60px]">
+            <div class="flex items-center justify-end h-16">
+                <!-- Right Side -->
+                <div class="flex items-center">
+                    <!-- Notification Icon -->
+                    <div class="mr-6 lg:mr-[29px]">
+                        <img class="h-6 w-6" src="/images/svgs/notification-icon.svg" alt="Notifications">
+                    </div>
+                    <!-- User Profile -->
+                    <div class="flex items-center space-x-2 mr-4 lg:mr-[60px]">
+                        <img class="h-8 w-8 rounded-full mr-2" src="/images/svgs/AM.svg" alt="User Profile">
+                        <span class="text-gray-700 text-sm mr-2">Adesola</span>
+                        <img src="/images/svgs/arrow-facing-down.svg" class="mr-2" alt="arrow-facing-down">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SMALL SIDE-BAR -->
+    <div class="w-[63px] h-screen bg-black text-white flex flex-col items-center sticky top-0 z-50">
+        <!-- Icons -->
+        <div class="mt-32">
+            <img src="/images/svgs/side-bar-1.svg" alt="">
+        </div>
+        <div class="mt-[52px] py-2 px-5 bg-white">
+            <img src="/images/svgs/side-bar-2.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-3.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-4.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-5.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-6.svg" alt="">
+        </div>
+    </div>
+
+    <!-- BIG SIDE-BAR -->
+    <div class="w-[213px] bg-white border-r-[#EEEEEE] border-solid border-2 z-50 hidden lg:block">
+        <div class="pl-[18px]">
+            <div class="pt-[47px]">
+                <img src="/images/lac-dashboard-logo.png" alt="">
+            </div>
+
+            <p class="mt-5 font-semibold text-[#7A7C87] text-base">TRM</p>
+
+            <div class="mt-6 w-[15px] flex justify-between mb-5">
+                <img src="/images/svgs/unactive-overview.svg" alt="">
+                <p class="text-sm text-[#9FA8AF] ml-[21px]"><a href="./dashboard.html">Overview</a></p>
+            </div>
+
+            <div class="mt-[35px] w-[15px] flex justify-between">
+                <img src="/images/svgs/active-requests.svg" alt="">
+                <p class="text-sm text-orange-500 ml-[21px]">Requests</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT, TOP CONTENT -->
+    <div class="px-11 mt-24 w-4/5">
+        <div class="container-fixed">
+            <div class="main-content">
+                <header> 
+                   <div class="">
+                       <h1><b>Rovenheight Properties</b></h1>
+                       <p>See inspection request details</p>
+                   </div>
+                   
+               </header>
+                <section class="main">
+                    <div class="tower">
+                      <img src="Assets/tower-removebg-preview.png"alt="tower">
+                      <p><img src="/images/svgs/property.svg" alt="" width="10px" height="10px"></p>
+                     </div>
+                     <div class="property">
+                       <h1>Rovenheight Properties</h1>
+                     <div class="property-detail">
+                         <div class="props-1"> 
+                          <div >
+                          <h6>Policy Number</p>
+                           <p>445673829</p>
+                          </div> <br>
+                          <div>
+                          <h6>Expiry date</p>
+                           <p>24-Dec-2024</p>
+                          </div>
+                     </div>
+                          <div class="props-2">
+                          <div>
+                          <h6>Last Type</p>
+                           <p>445673829</p>
+                          </div> <br>
+                          <div>
+                          <h6>Commencement date</p>
+                           <p>24-Dec-2024</p>
+                          </div>
+                        </div>
+                          <div class="props-3">
+                          <div>
+                          <h6>Policy Term(Years)</p>
+                           <p>5</p>
+                          </div>
+                          
+                          </div>
+                        </div>
+      
+                      </div>
+                      <div class="policy-progress">
+                        <h6>Policy Progress</h6>
+                        <img src="Assets/percentage-removebg-preview.png" alt="percentage">
+                        <p>3 days to expiry</p>
+                    </div>
+                   
+                     
+                
+                     </section>
+                
+   
+                <div class="info">
+                   <h1 class="insured-policy">Insured Details</h1>
+   
+                   <div class="tab-container">
+                       <div class="tabs">
+                           <button class="tab-button active" data-tab="property-info">Property Information</button>
+                           <button class="tab-button" data-tab="property-description">Property Description</button>
+                           <button class="tab-button" data-tab="supporting-documents">Supporting Document</button>
+                       </div>
+                       <div class="tab-content">
+                           <div id="property-info" class="content active">
+                               <!-- content for property info -->
+                               <div class="grid-container">
+                                   <div class="grid-item"><strong>Insured for</strong><br>Rovenheight Homes</div>
+                                   <div class="grid-item"><strong>Insured Name</strong><br>Rovenheight Homes</div>
+                                   <div class="grid-item"><strong>Loss estimate</strong><br>#1,200,000</div>
+                                   <div class="grid-item"><strong>Cause of Loss</strong><br>Rovenheight Homes</div>
+                                   <div class="grid-item"><strong>Cause of Loss</strong><br>Rovenheight Homes</div>
+                                   <div class="grid-item address" style="grid-column: span 3;"><strong>Property Address</strong><br>No. 16, Rovenheight Homes, Nicon town, Lekki phase 1, Lagos.</div>
+                                   <div class="grid-item"><strong>City</strong><br>Lekki</div>
+                                   <div class="grid-item"><strong>State</strong><br>Lagos</div>
+                               </div>
+                           </div>
+                           <div id="property-description" class="content">
+                               <!-- content for property description -->
+                               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero sunt aliquid nostrum. Nesciunt nemo asperiores magnam explicabo molestias soluta maiores!</p>
+                           </div>
+                           <div id="supporting-documents" class="content">
+                               <!-- Content for Supporting Document -->
+                                <div class="tableContent">
+                               <table class="table-container">
+                                   <tr>
+                                       <td class="first-column">Policy document</td>
+                                       <td>25 Aug, 2022 9:00 AM</td>
+                                       <td class="icon"><img src="./Assets/view(eye).svg"> View</td>
+                                       <td class="icon"> Download</td>
+                                   </tr>
+                                   <tr>
+                                       <td class="first-column">Police report</td>
+                                       <td>25 Aug, 2022 9:00 AM</td>
+                                       <td class="icon"><img src="./Assets/view(eye).svg"> View</td>
+                                       <td class="icon"> Download</td>
+                                   </tr>
+                                   <tr>
+                                       <td class="first-column">Attached document 1</td>
+                                       <td>25 Aug, 2022 9:00 AM</td>
+                                       <td class="icon"><img src="./Assets/view(eye).svg"> View</td>
+                                       <td class="icon"> Download</td>
+                                   </tr>
+                               </table>
+                           </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>  
+           </div>
+           
+       </div> 
+    </div>
+    <script>
+             document.addEventListener("DOMContentLoaded", function() {
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const contents = document.querySelectorAll(".content");
+
+    tabButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            tabButtons.forEach(btn => btn.classList.remove("active"));
+            contents.forEach(content => content.classList.remove("active"));
+
+            button.classList.add("active");
+            document.getElementById(button.getAttribute("data-tab")).classList.add("active");
+        });
+    });
+});
+    </script>
+</body>
+
+</html>

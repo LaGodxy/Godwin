@@ -1,0 +1,206 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/leadway-logo.png">
+    <title>Inspection List</title>
+    <link href="/dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="/main.css/input.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">     
+</head>
+
+<body class="flex font-Mulish">
+    <nav class="w-full bg-white shadow fixed top-0 z-40">
+        <div class="h-[60px]">
+            <div class="flex items-center justify-end h-16">
+                <!-- Right Side -->
+                <div class="flex items-center">
+                    <!-- Notification Icon -->
+                    <div class="mr-6 lg:mr-[29px]">
+                        <img class="h-6 w-6" src="/images/svgs/notification-icon.svg" alt="Notifications">
+                    </div>
+                    <!-- User Profile -->
+                    <div class="flex items-center space-x-2 mr-4 lg:mr-[60px]">
+                        <img class="h-8 w-8 rounded-full mr-2" src="/images/svgs/AM.svg" alt="User Profile">
+                        <span class="text-gray-700 text-sm mr-2">Adesola</span>
+                        <img src="/images/svgs/arrow-facing-down.svg" class="mr-2" alt="arrow-facing-down">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SMALL SIDE-BAR -->
+    <div class="w-[63px] h-screen bg-black text-white flex flex-col items-center sticky top-0 z-50">
+        <!-- Icons -->
+        <div class="mt-32">
+            <img src="/images/svgs/side-bar-1.svg" alt="">
+        </div>
+        <div class="mt-[52px] py-2 px-5 bg-white">
+            <img src="/images/svgs/side-bar-2.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-3.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-4.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-5.svg" alt="">
+        </div>
+        <div class="my-4">
+            <img src="/images/svgs/side-icon-6.svg" alt="">
+        </div>
+    </div>
+
+    <!-- BIG SIDE-BAR -->
+    <div class="w-[213px] bg-white border-r-[#EEEEEE] border-solid border-2 z-50 hidden lg:block">
+        <div class="pl-[18px]">
+            <div class="pt-[47px]">
+                <img src="/images/lac-dashboard-logo.png" alt="">
+            </div>
+
+            <p class="mt-5 font-semibold text-[#7A7C87] text-base">TRM</p>
+
+            <div class="mt-6 w-[15px] flex justify-between mb-5">
+                <img src="/images/svgs/unactive-overview.svg" alt="">
+                <p class="text-sm text-[#9FA8AF] ml-[21px]"><a href="./dashboard.html">Overview</a></p>
+            </div>
+
+            <div class="mt-[35px] w-[15px] flex justify-between">
+                <img src="/images/svgs/active-requests.svg" alt="">
+                <p class="text-sm text-orange-500 ml-[21px]">Requests</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT, TOP CONTENT -->
+    <div class="px-11 mt-24 w-4/5">
+        <div class="container">
+            <div class="header">
+                <div class="para">
+                <h1>Create New Inspection</h1>
+                <p>See Inspections across all business classes</p>
+                </div>
+                <a href="/pages/create-inspection2.html"> <i class="bi bi-chevron-compact-left"></i>Back to create request</a>
+            </div>
+            <div class="para-head">
+                <p class="underline">Post-Lost Link Generation(optional) </p>
+                </div>
+            <form class="inspection-form">
+               
+                <div class="form-group">
+                    <label for="policyNumber">Policy Number (optional)</label>
+                    <button class="btn"><i class="bi bi-search"></i> your name</button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactFirstName">Claim number(optional)</label>
+                    <button class="btn"><i class="bi bi-search"></i> your name</button>
+                </div>
+                <div class="form-group">
+                    <label for="contactFirstName">Client First Name</label>
+                    <input type="text" id="contactFirstName" name="contactFirstName" placeholder="your name">
+                </div>
+                <div class="form-group">
+                    <label for="contactLastName">Client Last Name</label>
+                    <input type="text" id="contactLastName" name="contactLastName" placeholder="your name">
+                </div>
+
+                <hr class="line">
+                <div class="form-group">
+                    <label for="contactPhoneNumber">Client Phone Number</label>
+                    <input type="tel" id="contactPhoneNumber" name="contactPhoneNumber" value="+234" placeholder="your name">
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Client Email Address</label>
+                    <input type="email" id="contactEmail" name="contactEmail" placeholder="your name">
+                </div>
+                <div class="form-group">
+                    <label for="state">Vehicle make</label>
+                    <select id="state" name="state">
+                        <option value="">Select a make </option>
+                        <!-- Add options here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="riskHouseNumber">Vehicle modal</label>
+                    <input type="text" id="riskHouseNumber" name="riskHouseNumber" placeholder="your name">
+                </div>
+            
+                <div class="form-group">
+                    <label for="riskAddress">Registration Number</label>
+                    <input type="text" id="riskAddress" name="riskAddress" placeholder="your name">
+                </div>
+                <div class="form-group">
+                    <label for="state">year</label>
+                    <select id="state" name="state">
+                        <option value="">Select a year</option>
+                        <!-- Add options here -->
+                    </select>
+                </div>
+            </form>
+            <div class="form-group">
+                <label for="lga">Comment</label>
+                <textarea name="#" placeholder="your Comment"></textarea>
+                <div class="downrequest">
+                    <button class="Attach">Attach document</button>
+                    <button class="btn-request" id="generate-btn"><li><a href="#">send request</a></li></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Modal Structure -->
+    <div id="confirmation-modal" class="inspection-modal" on>
+        <div class="inspection-modal-content">
+            <h3>Send to TRM</h3>
+            <p>Are you sure you want to send this request?</p>
+            <div>
+                <button id="close-modal">cancel</button>
+                <button id="send-request-btn">Submit</button>
+            </div>
+        </div>
+    </div>
+    <!-- Second Modal Structure -->
+    <div id="success-modal" class="inspection-modal">
+        <div class="success-modal-content">
+            <img
+                src="/pages/Group 383.jpg"
+                alt="icon"
+                class="hand-image"
+            />
+            <button class="cancel-success">
+                <img src="/pages/Vector.svg" alt="icon" />
+            </button>
+            <p>
+                You've successfully created new Inspection ID-23321 for
+                PRIME GARDENS
+            </p>
+            <div>
+                <button class="requests-link" id="requests-links">
+                    Go to Request List
+                </button>
+                <button class="create-new" id="create-new">
+                    Create New Inspection
+                </button>
+            </div>
+        </div>
+    </div>
+<script>
+    function toggleSidebar() {
+        document.querySelector('.sidebar').classList.toggle('active');
+    }
+
+</script>
+<script src="/js/input.js"></script>
+    </div>
+</body>
+
+</html>
